@@ -25,4 +25,4 @@ var cupcake = {
     // }
 };
 
-module.exports = cat;
+module.exports = cupcake;
