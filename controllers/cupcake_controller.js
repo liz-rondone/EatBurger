@@ -20,10 +20,10 @@ router.get('/', function(req, res) {
 // insert
 router.post('/', function(req, res) {
     cupcake.create([
-        // name or cupcake_name?
+        // "name" or "cupcake_name"?
         "cupcake_name", "devoured"
     ], [
-        // name or cupcake_name?
+        // "name" or "cupcake_name"?
         req.body.name, req.body.devoured
     ], function() {
         res.redirect('/');
@@ -44,7 +44,7 @@ router.put("/:id", function(req, res) {
 });
 
 // delete?
-// router.delete("/:id", function(req, res){
+// router.delete("/:id", function(req, res) {
 //     var condition = "id = " + req.params.id;
 
 //     cat.delete(condition, function() {
