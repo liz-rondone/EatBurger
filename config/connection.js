@@ -4,7 +4,7 @@ var keys = require('./keys.js');
 var pswd = keys.mysqlKey.mysqlPassword;
 
 var connection = mysql.createConnection({
-    port: 3300,
+    port: 3306,
     host: 'localhost',
     user: 'root',
     password: pswd,
