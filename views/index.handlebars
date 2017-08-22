@@ -1,60 +1,59 @@
-<div class="center">  
-  <h1>Not Everyone Likes Burgers...</h1>
+<div class="txtCntr">  
+  <div class="jumbotron">
+    <h1 class="display-3">Not Everyone Likes Burgers...</h1>
+  </div>
 
   {{!-- UNEATED --}}
-  <div id="uneaten">
-    <h2>Yummy Cupcakes</h2>
-
-    <ul>
+  <div class="">
+    <h2 class="margTitle">Yummy Cupcakes</h2>
+    
       {{!-- each = for loop --}}
       {{#each cupcakes}}
         {{!-- unless = else in the if/else statement --}}
         {{#unless this.devoured}}
-          <li>
-            {{!-- running the put(update db) method override --}}
-            <form action="/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devoured" value="true">
-              {{!-- submit button starts the function then runs the put method --}}
-              <button type="submit" class="btn">{{this.cupcake_name}}</button>
-            </form>
+          
+          {{!-- running the put(update db) method override --}}
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            {{!-- submit button starts the function then runs the put method --}}
+            <button type="submit" class="btn btn-primary margBtn">{{this.cupcake_name}}</button>
+          </form>
 
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
+    
   </div>
 
   {{!-- DEVOURED --}}
-  <div id="eaten">
+  <div>
     
-    <h2>In My Tum-tum</h2>
+    <h2 class="margTitle">In My Tum-tum</h2>
 
-    <ul>
       {{#each cupcakes}}
         {{#if this.devoured}}
-          <li>
 
             <form action="/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="false">
-              <button type="submit" class="btn">{{this.cupcake_name}}</button>
+              <button type="submit" class="btn btn-outline-primary margBtn">{{this.cupcake_name}}</button>
             </form>
 
-          </li>
         {{/if}}
       {{/each}}
-    </ul>
+
   </div>
 
   {{!-- ADD CUPCAKE --}}
   <div class="center" id="add">
 
-    <h2>Add a Cupcake</h2>
+    <h2 class="margTitle">Add a Cupcake</h2>
 
     <form class="create-update-form" action="/" method="POST">
 
-      <div class="form-group">
-        <label for="cupcake" id="cupcake-name">Cupcake Name:</label>
-        <input type="text" id="cupcake" name="name">
+      <div class="form-group row margForm">
+        <label for="cupcake" class="col-sm-2 col-form-label">Cupcake Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="cupcake" placeholder="What are you craving?">
+        </div>
       </div>
 
       <button type="submit" class="btn">Add Cupcake</button>
