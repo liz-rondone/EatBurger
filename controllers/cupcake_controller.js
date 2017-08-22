@@ -8,10 +8,10 @@ var cupcake = require("../models/cupcake.js");
 
 // select
 router.get('/', function(req, res) {
-    cupcake.all(function(data) {
+    cupcake.allCupcakes(function(data) {
         var hbsObject = {
             cupcakes: data
-        };
+        }
         console.log(hbsObject);
         res.render('index', hbsObject);
     });
@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 
 // insert
 router.post('/', function(req, res) {
-    cupcake.create([
+    cupcake.createCupcake([
         // "name" or "cupcake_name"?
         "cupcake_name", "devoured"
     ], [
@@ -36,20 +36,11 @@ router.put("/:id", function(req, res) {
 
     console.log("condition", condition);
 
-    cupcake.update({
+    cupcake.updateCupcake({
         devoured: req.body.devoured
     }, condition, function() {
         res.redirect("/");
     });
 });
-
-// delete?
-// router.delete("/:id", function(req, res) {
-//     var condition = "id = " + req.params.id;
-
-//     cat.delete(condition, function() {
-//         res.redirect('/');
-//     });
-// });
 
 module.exports = router;
